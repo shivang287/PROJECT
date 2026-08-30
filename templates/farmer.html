@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Dashboard | FarmBridge AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- NAVBAR -->
+
+    <nav class="dashboard-nav">
+
+        <div class="logo">
+            🌱 FarmBridge <span>AI</span>
+        </div>
+
+        <div class="nav-user">
+
+            <div class="user-avatar">
+                RK
+            </div>
+
+            <div>
+                <strong>Rajesh Kumar</strong>
+                <small>Farmer • Meerut</small>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                FARMER PORTAL
+            </div>
+
+
+            <a href="/farmer" class="sidebar-link active">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+
+            <a href="#produce" class="sidebar-link">
+                <span>🌾</span>
+                My Produce
+            </a>
+
+
+            <a href="/matching" class="sidebar-link">
+                <span>🤝</span>
+                Buyer Matches
+            </a>
+
+
+            <a href="#offers" class="sidebar-link">
+                <span>💰</span>
+                Offers
+            </a>
+
+
+            <a href="/logistics" class="sidebar-link">
+                <span>🚚</span>
+                Deliveries
+            </a>
+
+
+            <div class="sidebar-bottom">
+
+                <a href="/" class="sidebar-link">
+                    <span>🏠</span>
+                    Home
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="dashboard-main">
+
+
+            <!-- HEADER -->
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <p class="dashboard-label">
+                        FARMER DASHBOARD
+                    </p>
+
+                    <h1>
+                        Namaste, Rajesh 👋
+                    </h1>
+
+                    <p>
+                        Find better markets for your produce with
+                        intelligent demand matching and transparent deals.
+                    </p>
+
+                </div>
+
+
+                <button class="notification-btn">
+                    🔔
+                </button>
+
+            </div>
+
+
+
+            <!-- STATS -->
+
+            <section class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🌾
+                    </div>
+
+                    <div>
+
+                        <span>Available Produce</span>
+
+                        <strong>
+                            1,200 kg
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🤝
+                    </div>
+
+                    <div>
+
+                        <span>Buyer Matches</span>
+
+                        <strong>
+                            8
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <span>Best Offer</span>
+
+                        <strong>
+                            ₹30/kg
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        📈
+                    </div>
+
+                    <div>
+
+                        <span>Price Opportunity</span>
+
+                        <strong>
+                            +11%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MAIN CONTENT -->
+
+            <section class="content-grid">
+
+
+                <!-- PRODUCE -->
+
+                <div class="panel" id="produce">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>
+                                My Produce
+                            </h2>
+
+                            <p>
+                                Currently available for market
+                            </p>
+
+                        </div>
+
+
+                        <button class="small-btn">
+                            + Add Produce
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="farmer-produce-card">
+
+
+                        <div class="produce-icon large-produce">
+                            🍅
+                        </div>
+
+
+                        <div class="farmer-produce-info">
+
+                            <div class="demand-title-row">
+
+                                <h3>
+                                    Tomato
+                                </h3>
+
+                                <span class="status active-status">
+                                    ● Available
+                                </span>
+
+                            </div>
+
+
+                            <p>
+                                Grade A • Meerut, Uttar Pradesh
+                            </p>
+
+
+                            <div class="farmer-details">
+
+                                <div>
+
+                                    <span>
+                                        Quantity
+                                    </span>
+
+                                    <strong>
+                                        1,200 kg
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Harvest
+                                    </span>
+
+                                    <strong>
+                                        2 days
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Expected Price
+                                    </span>
+
+                                    <strong>
+                                        ₹27–31/kg
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- AI OPPORTUNITY -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>
+                                AI Opportunity
+                            </h2>
+
+                            <p>
+                                FarmBridge found a market opportunity
+                            </p>
+
+                        </div>
+
+                        <span class="live-badge">
+                            ● AI
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="farmer-ai-box">
+
+                        <div class="ai-opportunity-icon">
+                            🤖
+                        </div>
+
+
+                        <h3>
+                            Buyer demand detected
+                        </h3>
+
+
+                        <p>
+                            A bulk buyer near Delhi requires
+                            <strong>5,000 kg</strong> of Grade A tomatoes.
+                        </p>
+
+
+                        <div class="opportunity-data">
+
+                            <div>
+
+                                <span>
+                                    Buyer Requirement
+                                </span>
+
+                                <strong>
+                                    5,000 kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Your Contribution
+                                </span>
+
+                                <strong>
+                                    1,200 kg
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="/matching"
+                            class="match-btn farmer-match-btn"
+                        >
+                            🤝 View AI Match
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- POOLING OPPORTUNITY -->
+
+            <section class="panel pooling-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            🤝 Smart Pooling Opportunity
+                        </h2>
+
+                        <p>
+                            Your quantity alone is smaller than the buyer requirement.
+                            FarmBridge can combine nearby farmers.
+                        </p>
+
+                    </div>
+
+                    <span class="pool-status">
+                        Optimal Pool Found
+                    </span>
+
+                </div>
+
+
+                <div class="pool-flow">
+
+
+                    <div class="pool-farmer">
+
+                        <div class="pool-avatar">
+                            RK
+                        </div>
+
+                        <strong>
+                            You
+                        </strong>
+
+                        <span>
+                            1,200 kg
+                        </span>
+
+                    </div>
+
+
+                    <div class="pool-plus">
+                        +
+                    </div>
+
+
+                    <div class="pool-farmer">
+
+                        <div class="pool-avatar">
+                            AS
+                        </div>
+
+                        <strong>
+                            Amit
+                        </strong>
+
+                        <span>
+                            900 kg
+                        </span>
+
+                    </div>
+
+
+                    <div class="pool-plus">
+                        +
+                    </div>
+
+
+                    <div class="pool-farmer">
+
+                        <div class="pool-avatar">
+                            SP
+                        </div>
+
+                        <strong>
+                            Suresh
+                        </strong>
+
+                        <span>
+                            1,100 kg
+                        </span>
+
+                    </div>
+
+
+                    <div class="pool-plus">
+                        +
+                    </div>
+
+
+                    <div class="pool-farmer">
+
+                        <div class="pool-avatar">
+                            MF
+                        </div>
+
+                        <strong>
+                            Meerut FPO
+                        </strong>
+
+                        <span>
+                            1,800 kg
+                        </span>
+
+                    </div>
+
+
+                    <div class="pool-arrow">
+                        →
+                    </div>
+
+
+                    <div class="pool-result">
+
+                        <div>
+                            ✓
+                        </div>
+
+                        <strong>
+                            5,000 kg
+                        </strong>
+
+                        <span>
+                            Buyer requirement fulfilled
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pool-bottom">
+
+                    <div>
+
+                        <span>
+                            Your estimated earning
+                        </span>
+
+                        <strong>
+                            ₹36,000
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Recommended price
+                        </span>
+
+                        <strong>
+                            ₹30/kg
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="match-btn"
+                        onclick="joinPool()"
+                    >
+                        Join Smart Pool
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MARKET INSIGHTS -->
+
+            <section class="content-grid">
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>
+                                📈 Market Insight
+                            </h2>
+
+                            <p>
+                                AI-powered price and demand intelligence
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="market-insight">
+
+
+                        <div class="market-price">
+
+                            <span>
+                                Current indicative price
+                            </span>
+
+                            <strong>
+                                ₹29/kg
+                            </strong>
+
+                            <small>
+                                ↑ 6.2% this week
+                            </small>
+
+                        </div>
+
+
+                        <div class="price-bar">
+
+                            <div class="price-low">
+                                ₹27
+                            </div>
+
+                            <div class="price-range">
+                                <div></div>
+                            </div>
+
+                            <div class="price-high">
+                                ₹31
+                            </div>
+
+                        </div>
+
+
+                        <p class="market-note">
+                            💡 AI suggests waiting 1–2 days may improve
+                            the selling opportunity based on predicted demand.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="panel" id="offers">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>
+                                💰 Latest Offer
+                            </h2>
+
+                            <p>
+                                Best available buyer offer
+                            </p>
+
+                        </div>
+
+                        <span class="status active-status">
+                            New
+                        </span>
+
+                    </div>
+
+
+                    <div class="offer-card">
+
+                        <div class="offer-company">
+                            🏢
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                ABC Foods
+                            </strong>
+
+                            <p>
+                                Delhi NCR • 5,000 kg
+                            </p>
+
+                        </div>
+
+
+                        <div class="offer-price">
+
+                            <span>
+                                Offer
+                            </span>
+
+                            <strong>
+                                ₹30/kg
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="offer-actions">
+
+                        <button
+                            class="accept-btn"
+                            onclick="acceptOffer()"
+                        >
+                            ✓ Accept
+                        </button>
+
+                        <a
+                            href="/deal"
+                            class="negotiate-btn"
+                        >
+                            ⚖️ Review Fair Deal
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- BOTTOM BANNER -->
+
+            <div class="coordination-banner">
+
+                <div class="banner-icon">
+                    🌱
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Your produce. Better market access.
+                    </strong>
+
+                    <p>
+                        FarmBridge helps small farmers participate
+                        in larger bulk orders through intelligent pooling.
+                    </p>
+
+                </div>
+
+
+                <a href="/matching">
+                    Explore Matches →
+                </a>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
