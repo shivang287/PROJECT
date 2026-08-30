@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF Toolkit</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+        <div class="logo">
+            PDF<span>Toolkit</span>
+        </div>
+
+        <nav>
+            <a href="#tools">Tools</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>All Your PDF Tools in One Place</h1>
+
+        <p>
+            Merge, split, rotate, convert, protect, scan and
+            manage your PDF files directly from your browser.
+        </p>
+
+        <a href="#tools" class="main-btn">
+            Explore Tools
+        </a>
+
+    </section>
+
+
+    <!-- ================= TOOLS ================= -->
+
+    <main id="tools">
+
+        <div class="section-heading">
+            <h2>PDF Tools</h2>
+            <p>Select the operation you want to perform.</p>
+        </div>
+
+
+        <div class="tools-grid">
+
+
+            <!-- ================= AI-CHAT ================= -->
+
+            <div class="tool-card ai-card">
+
+    <div class="icon">🤖</div>
+
+    <h3>AI Chat with PDF</h3>
+
+    <p>
+        Upload your PDF once, then ask
+        multiple questions about it.
+    </p>
+
+
+    <!-- PDF UPLOAD -->
+
+    <div id="aiUploadSection">
+
+        <label>Select PDF</label>
+
+        <input
+            type="file"
+            id="aiPdfFile"
+            accept=".pdf"
+        >
+
+        <button
+            type="button"
+            id="processPdfBtn"
+        >
+            Process PDF
+        </button>
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div id="aiStatus"></div>
+
+
+    <!-- CHAT -->
+
+    <div
+        id="aiChatSection"
+        style="display:none;"
+    >
+
+        <textarea
+            id="aiQuestion"
+            placeholder="Ask something about your PDF..."
+        ></textarea>
+
+        <button
+            type="button"
+            id="askAiBtn"
+        >
+            Ask AI
+        </button>
+
+
+        <div id="aiLoading"
+             style="display:none;">
+
+            AI is thinking...
+
+        </div>
+
+
+        <div id="aiAnswer"></div>
+
+    </div>
+
+</div>
+
+            <!-- ================= SIGNATURE ================= -->
+
+    <div class="tool-card">
+
+    <div class="icon">✍️</div>
+
+    <h3>Add Signature</h3>
+
+    <p>
+        Add your signature image to a PDF.
+    </p>
+
+    <form
+        action="/add-signature"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <label>PDF</label>
+
+        <input
+            type="file"
+            name="file"
+            accept=".pdf"
+            required
+        >
+
+        <label>Signature</label>
+
+        <input
+            type="file"
+            name="signature"
+            accept=".png,.jpg,.jpeg"
+            required
+        >
+
+        <label>Page Number</label>
+
+        <input
+            type="number"
+            name="page"
+            value="1"
+            min="1"
+            required
+        >
+
+        <label>X Position</label>
+
+        <input
+            type="number"
+            name="x"
+            value="100"
+            min="0"
+            required
+        >
+
+        <label>Y Position</label>
+
+        <input
+            type="number"
+            name="y"
+            value="100"
+            min="0"
+            required
+        >
+
+        <label>Width</label>
+
+        <input
+            type="number"
+            name="width"
+            value="150"
+            min="10"
+            required
+        >
+
+        <label>Height</label>
+
+        <input
+            type="number"
+            name="height"
+            value="60"
+            min="10"
+            required
+        >
+
+        <button type="submit">
+            Add Signature
+        </button>
+
+    </form>
+
+</div>
+
+
+            <!-- ================= MERGE ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">📑</div>
+
+                <h3>Merge PDF</h3>
+
+                <p>Combine multiple PDF files into one document.</p>
+
+                <form action="/merge"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDFs</label>
+
+                    <input type="file"
+                           name="files"
+                           accept=".pdf"
+                           multiple
+                           required>
+
+                    <input type="text"
+                           name="output_name"
+                           placeholder="Output name (optional)">
+
+                    <button type="submit">
+                        Merge PDFs
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= SPLIT ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">✂️</div>
+
+                <h3>Split PDF</h3>
+
+                <p>Separate every page of a PDF into individual files.</p>
+
+                <form action="/split"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <button type="submit">
+                        Split PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= ROTATE ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🔄</div>
+
+                <h3>Rotate PDF</h3>
+
+                <p>Rotate all pages of your PDF.</p>
+
+                <form action="/rotate"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Rotation</label>
+
+                    <select name="angle" required>
+
+                        <option value="90">
+                            90°
+                        </option>
+
+                        <option value="180">
+                            180°
+                        </option>
+
+                        <option value="270">
+                            270°
+                        </option>
+
+                    </select>
+
+                    <button type="submit">
+                        Rotate PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= DELETE ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🗑️</div>
+
+                <h3>Delete Pages</h3>
+
+                <p>Remove selected pages from your PDF.</p>
+
+                <form action="/delete-pages"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Pages to delete</label>
+
+                    <input type="text"
+                           name="pages"
+                           placeholder="Example: 1,3,5"
+                           required>
+
+                    <button type="submit">
+                        Delete Pages
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= EXTRACT ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">📤</div>
+
+                <h3>Extract Pages</h3>
+
+                <p>Create a new PDF containing selected pages.</p>
+
+                <form action="/extract-pages"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Pages</label>
+
+                    <input type="text"
+                           name="pages"
+                           placeholder="Example: 1,2,5"
+                           required>
+
+                    <button type="submit">
+                        Extract Pages
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= WATERMARK ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">💧</div>
+
+                <h3>Add Watermark</h3>
+
+                <p>Add a PDF watermark to every page.</p>
+
+                <form action="/watermark"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Main PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Watermark PDF</label>
+
+                    <input type="file"
+                           name="watermark"
+                           accept=".pdf"
+                           required>
+
+                    <button type="submit">
+                        Add Watermark
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= ENCRYPT ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🔒</div>
+
+                <h3>Protect PDF</h3>
+
+                <p>Protect your PDF using a password.</p>
+
+                <form action="/encrypt"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Password</label>
+
+                    <input type="password"
+                           name="password"
+                           placeholder="Enter password"
+                           required>
+
+                    <button type="submit">
+                        Protect PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= DECRYPT ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🔓</div>
+
+                <h3>Unlock PDF</h3>
+
+                <p>Remove encryption using the correct password.</p>
+
+                <form action="/decrypt"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Password</label>
+
+                    <input type="password"
+                           name="password"
+                           placeholder="Current PDF password"
+                           required>
+
+                    <button type="submit">
+                        Unlock PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= PDF TO IMAGE ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🖼️</div>
+
+                <h3>PDF to Images</h3>
+
+                <p>Convert PDF pages into high-quality PNG images.</p>
+
+                <form action="/pdf-to-images"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <button type="submit">
+                        Convert to Images
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= IMAGE TO PDF ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">📷</div>
+
+                <h3>Images to PDF</h3>
+
+                <p>Combine JPG and PNG images into a PDF.</p>
+
+                <form action="/images-to-pdf"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select Images</label>
+
+                    <input type="file"
+                           name="files"
+                           accept=".jpg,.jpeg,.png"
+                           multiple
+                           required>
+
+                    <button type="submit">
+                        Create PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= TEXT EXTRACTION ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">📝</div>
+
+                <h3>Extract Text</h3>
+
+                <p>Extract readable text from your PDF.</p>
+
+                <form action="/extract-text"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <button type="submit">
+                        Extract Text
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= SEARCH ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🔎</div>
+
+                <h3>Search PDF</h3>
+
+                <p>Find a word and see which pages contain it.</p>
+
+                <form action="/search"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Search Word</label>
+
+                    <input type="text"
+                           name="keyword"
+                           placeholder="Example: Python"
+                           required>
+
+                    <button type="submit">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= HIGHLIGHT ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">🖍️</div>
+
+                <h3>Highlight Word</h3>
+
+                <p>Highlight every occurrence of a word.</p>
+
+                <form action="/highlight"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <label>Word</label>
+
+                    <input type="text"
+                           name="keyword"
+                           placeholder="Word to highlight"
+                           required>
+
+                    <button type="submit">
+                        Highlight
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= OCR ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">👁️</div>
+
+                <h3>OCR Scanner</h3>
+
+                <p>Extract text from scanned PDF documents.</p>
+
+                <form action="/ocr"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select Scanned PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <button type="submit">
+                        Scan PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= 4 UP ================= -->
+
+            <div class="tool-card">
+
+                <div class="icon">▦</div>
+
+                <h3>4-Up PDF</h3>
+
+                <p>Place four PDF pages onto one page.</p>
+
+                <form action="/four-up"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <label>Select PDF</label>
+
+                    <input type="file"
+                           name="file"
+                           accept=".pdf"
+                           required>
+
+                    <button type="submit">
+                        Create 4-Up PDF
+                    </button>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="about">
+
+        <h2>About PDF Toolkit</h2>
+
+        <p>
+            PDF Toolkit is a Python and Flask based web application
+            providing useful tools for editing, converting and
+            processing PDF documents.
+        </p>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            PDF Toolkit • Built with Python & Flask
+        </p>
+
+    </footer>
+
+
+   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

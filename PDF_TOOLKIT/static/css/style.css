@@ -1,0 +1,387 @@
+/* ==========================================================================
+   Google Fonts Import
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   CSS Variables for Theming
+   ========================================================================== */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --primary-color: #6366f1;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transition-speed: 0.3s;
+}
+
+/* ==========================================================================
+   Global Resets & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   Navbar (Glassmorphism Effect)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-sm);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    
+    
+    -webkit-background-clip: text;
+    background-clip: text; /* Add this line */
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar nav a {
+    margin-left: 2rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color var(--transition-speed);
+}
+
+.navbar nav a:hover {
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    text-align: center;
+    padding: 8rem 5% 6rem;
+    background: var(--primary-gradient);
+    color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.9;
+}
+
+.main-btn {
+    display: inline-block;
+    background: white;
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: all var(--transition-speed);
+}
+
+.main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Tools Section
+   ========================================================================== */
+#tools {
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-heading h2 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.section-heading p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Tools Grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Tool Cards */
+.tool-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.tool-card .icon {
+    font-size: 2.5rem;
+    background: var(--bg-main);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.tool-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.tool-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Pushes the form to the bottom */
+}
+
+/* ==========================================================================
+   Forms & Inputs
+   ========================================================================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+form input[type="file"],
+form input[type="text"],
+form input[type="password"],
+form select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    transition: all 0.2s ease;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    background-color: white;
+}
+
+form input[type="file"]::file-selector-button {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    color: var(--text-main);
+    cursor: pointer;
+    margin-right: 1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+form input[type="file"]::file-selector-button:hover {
+    background: var(--bg-main);
+    border-color: var(--text-muted);
+}
+
+form button[type="submit"] {
+    background: var(--text-main);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    margin-top: 0.5rem;
+}
+
+.tool-card:hover button[type="submit"] {
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+}
+
+form button[type="submit"]:hover {
+    transform: scale(1.02);
+}
+
+/* ==========================================================================
+   About Section
+   ========================================================================== */
+#about {
+    padding: 6rem 5%;
+    text-align: center;
+    background: white;
+    border-top: 1px solid var(--border-color);
+}
+
+#about h2 {
+    
+    -webkit-background-clip: text;
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+#about p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 2rem 5%;
+    background: var(--text-main);
+    color: white;
+}
+
+footer p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .navbar nav a {
+        margin: 0 1rem;
+    }
+    
+    .hero {
+        padding: 6rem 5% 4rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ai-card {
+    grid-column: span 2;
+}
+
+.ai-card textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+#aiLoading {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+#aiAnswer {
+    margin-top: 20px;
+    padding: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}

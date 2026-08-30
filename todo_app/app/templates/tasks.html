@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+
+<div class="task-box">
+
+    <!-- PAGE HEADER -->
+    <div class="task-header">
+        <div>
+            <h2>Your Tasks</h2>
+            <p class="task-subtitle">
+                Stay organized and get things done.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ADD TASK -->
+    <form
+        action="{{ url_for('tasks.add_tasks') }}"
+        method="POST"
+        class="task-form"
+        id="add-task-form"
+    >
+
+        <input
+            type="text"
+            name="title"
+            id="task-title"
+            placeholder="What do you need to do?"
+            autocomplete="off"
+            required
+        >
+
+        <button
+            type="submit"
+            class="btn"
+            id="add-task-button"
+        >
+            Add Task
+        </button>
+
+    </form>
+
+
+    <!-- TASK TOOLBAR
+         IMPORTANT:
+         This stays outside {% if tasks %}
+         so it never disappears.
+    -->
+    <div
+        class="task-toolbar"
+        id="task-toolbar"
+    >
+
+        <!-- TASK COUNT -->
+        <div
+            class="task-count"
+            id="task-count"
+        >
+            {{ tasks|length }}
+
+            {% if tasks|length == 1 %}
+                task
+            {% else %}
+                tasks
+            {% endif %}
+        </div>
+
+
+        <!-- CLEAR ALL -->
+        <form
+            method="POST"
+            action="{{ url_for('tasks.clear_tasks') }}"
+            id="clear-tasks-form"
+        >
+
+            <button
+                type="submit"
+                class="btn btn-clear"
+                id="clear-tasks-button"
+                {% if not tasks %}
+                    disabled
+                {% endif %}
+            >
+                Clear All Tasks
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- TASK TABLE / EMPTY STATE -->
+
+    {% if tasks %}
+
+        <div
+            class="task-table-wrapper"
+            id="task-table-wrapper"
+        >
+
+            <table class="task-table">
+
+                <thead>
+                    <tr>
+                        <th class="col-number">#</th>
+                        <th class="col-task">Task</th>
+                        <th class="col-status">Status</th>
+                        <th class="col-actions">Actions</th>
+                    </tr>
+                </thead>
+
+
+                <tbody id="task-table-body">
+
+                    {% for task in tasks %}
+
+                    <tr id="task-row-{{ task.id }}">
+
+                        <!-- NUMBER -->
+                        <td class="task-number">
+                            {{ loop.index }}
+                        </td>
+
+
+                        <!-- TASK TITLE -->
+                        <td class="task-title-cell">
+                            {{ task.title }}
+                        </td>
+
+
+                        <!-- STATUS -->
+                        <td class="task-status-cell">
+
+                            <span
+                                class="badge {{ task.status|lower }}"
+                            >
+                                {{ task.status }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTIONS -->
+                        <td class="task-actions-cell">
+
+                            <!-- NEXT -->
+                            <form
+                                action="{{ url_for(
+                                    'tasks.toggle_status',
+                                    task_id=task.id
+                                ) }}"
+                                method="POST"
+                                class="task-action-form"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn-small"
+                                >
+                                    Next
+                                </button>
+
+                            </form>
+
+
+                            <!-- DELETE -->
+                            <form
+                                action="{{ url_for(
+                                    'tasks.delete_task',
+                                    task_id=task.id
+                                ) }}"
+                                method="POST"
+                                class="task-action-form delete-task-form"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn-small btn-delete"
+                                >
+                                    Delete
+                                </button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    {% else %}
+
+        <!-- EMPTY STATE -->
+        <div
+            class="empty-task-state"
+            id="empty-task-message"
+        >
+
+            <div class="empty-task-icon">
+                ✓
+            </div>
+
+            <h3>No tasks yet</h3>
+
+            <p>
+                Add your first task above and
+                start getting things done.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
