@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Matching | FarmBridge AI</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body class="dashboard-body">
+
+
+    <nav class="dashboard-nav">
+
+        <div class="logo">
+            🌱 FarmBridge <span>AI</span>
+        </div>
+
+
+        <div class="nav-user">
+
+            <div class="user-avatar">
+                AF
+            </div>
+
+            <div>
+
+                <strong>
+                    ABC Foods
+                </strong>
+
+                <small>
+                    AI Matching
+                </small>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <div class="dashboard-container">
+
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                BUYER PORTAL
+            </div>
+
+
+            <a
+                href="/buyer"
+                class="sidebar-link"
+            >
+                <span>📊</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="/matching"
+                class="sidebar-link active"
+            >
+                <span>🤖</span>
+                AI Matching
+            </a>
+
+
+            <a
+                href="/deal"
+                class="sidebar-link"
+            >
+                <span>⚖️</span>
+                Fair Deal
+            </a>
+
+
+            <a
+                href="/logistics"
+                class="sidebar-link"
+            >
+                <span>🚚</span>
+                Logistics
+            </a>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="/"
+                    class="sidebar-link"
+                >
+                    <span>🏠</span>
+                    Home
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <main class="dashboard-main">
+
+
+            <div class="dashboard-header">
+
+                <div>
+
+                    <p class="dashboard-label">
+                        FARM BRIDGE INTELLIGENCE
+                    </p>
+
+                    <h1>
+                        AI Farmer-Buyer Matching 🤖
+                    </h1>
+
+                    <p>
+                        FarmBridge analyzes quantity, distance,
+                        quality, price and delivery compatibility.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DEMAND SUMMARY -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Buyer Requirement
+                        </h2>
+
+                        <p>
+                            Active reverse-demand request
+                        </p>
+
+                    </div>
+
+
+                    <span class="live-badge">
+                        ● AI ANALYSIS
+                    </span>
+
+                </div>
+
+
+                <div class="matching-demand">
+
+                    <div class="matching-product">
+                        🍅
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Tomato
+                        </h2>
+
+                        <p>
+                            Grade A • Delhi NCR
+                        </p>
+
+                    </div>
+
+
+                    <div class="matching-stat">
+
+                        <span>
+                            Required
+                        </span>
+
+                        <strong>
+                            5,000 kg
+                        </strong>
+
+                    </div>
+
+
+                    <div class="matching-stat">
+
+                        <span>
+                            Price Range
+                        </span>
+
+                        <strong>
+                            ₹27–31/kg
+                        </strong>
+
+                    </div>
+
+
+                    <div class="matching-stat">
+
+                        <span>
+                            Required By
+                        </span>
+
+                        <strong>
+                            30 Aug
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MATCH RESULTS -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Recommended Suppliers
+                        </h2>
+
+                        <p>
+                            Ranked by FarmBridge matching intelligence
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="match-results">
+
+                    <div class="loading-state">
+
+                        🤖 Analyzing available farm supply...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- POOL -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            🤝 Smart Pooling
+                        </h2>
+
+                        <p>
+                            FarmBridge can combine multiple suppliers
+                            to fulfill the complete requirement.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="pool-result">
+
+                    <div class="loading-state">
+                        Calculating optimal pool...
+                    </div>
+
+                </div>
+
+
+                <div class="matching-actions">
+
+                    <a
+                        href="/deal"
+                        class="match-btn"
+                    >
+                        ⚖️ Continue to Fair Deal
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+
+    <script>
+
+        async function loadMatches() {
+
+            const response = await fetch(
+                "/api/matches"
+            );
+
+            const data = await response.json();
+
+            const container =
+                document.getElementById("match-results");
+
+
+            container.innerHTML = "";
+
+
+            data.matches.forEach((farmer, index) => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "ai-match-card";
+
+
+                card.innerHTML = `
+
+                    <div class="match-rank">
+                        #${index + 1}
+                    </div>
+
+
+                    <div class="match-avatar">
+                        ${farmer.name
+                            .substring(0, 2)
+                            .toUpperCase()}
+                    </div>
+
+
+                    <div class="match-person">
+
+                        <h3>
+                            ${farmer.name}
+                        </h3>
+
+                        <p>
+                            ${farmer.location}
+                            • ${farmer.type}
+                        </p>
+
+                    </div>
+
+
+                    <div class="match-data">
+
+                        <span>Available</span>
+
+                        <strong>
+                            ${farmer.quantity} kg
+                        </strong>
+
+                    </div>
+
+
+                    <div class="match-data">
+
+                        <span>Distance</span>
+
+                        <strong>
+                            ${farmer.distance} km
+                        </strong>
+
+                    </div>
+
+
+                    <div class="match-data">
+
+                        <span>Quality</span>
+
+                        <strong>
+                            Grade ${farmer.quality}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="ai-score">
+
+                        <strong>
+                            ${farmer.score}%
+                        </strong>
+
+                        <span>
+                            MATCH
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+
+
+        async function loadPool() {
+
+            const response =
+                await fetch("/api/pool");
+
+            const data =
+                await response.json();
+
+
+            const container =
+                document.getElementById("pool-result");
+
+
+            let farmersHTML = "";
+
+
+            data.farmers.forEach(
+                (farmer, index) => {
+
+                    farmersHTML += `
+
+                        <div class="pool-mini-card">
+
+                            <span>
+                                ${index + 1}
+                            </span>
+
+                            <strong>
+                                ${farmer.name}
+                            </strong>
+
+                            <small>
+                                ${farmer.quantity} kg
+                            </small>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+
+            container.innerHTML = `
+
+                <div class="pool-summary">
+
+                    <div>
+
+                        <span>
+                            Buyer Requirement
+                        </span>
+
+                        <strong>
+                            ${data.required_quantity} kg
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            AI Pooled Supply
+                        </span>
+
+                        <strong>
+                            ${data.total_quantity} kg
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong class="pool-success">
+                            ${data.fulfilled
+                                ? "✓ Fully Fulfilled"
+                                : "⚠ Shortage"}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pool-mini-grid">
+
+                    ${farmersHTML}
+
+                </div>
+
+            `;
+
+        }
+
+
+        loadMatches();
+
+        loadPool();
+
+    </script>
+
+
+</body>
+
+</html>

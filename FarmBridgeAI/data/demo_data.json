@@ -1,0 +1,107 @@
+{
+    "buyer_demand": {
+        "id": "D001",
+        "buyer": "ABC Foods",
+        "product": "Tomato",
+        "quantity": 5000,
+        "quality": "A",
+        "latitude": 28.6139,
+        "longitude": 77.2090,
+        "location": "Delhi NCR",
+        "required_by": "2026-08-30",
+        "min_price": 27,
+        "max_price": 31
+    },
+
+    "farmers": [
+        {
+            "id": "F001",
+            "name": "Rajesh Kumar",
+            "type": "Farmer",
+            "location": "Meerut",
+            "latitude": 28.9845,
+            "longitude": 77.7064,
+            "product": "Tomato",
+            "quantity": 1200,
+            "quality": "A",
+            "price": 29,
+            "delivery_days": 2,
+            "reliability": 95
+        },
+
+        {
+            "id": "F002",
+            "name": "Amit Singh",
+            "type": "Farmer",
+            "location": "Ghaziabad",
+            "latitude": 28.6692,
+            "longitude": 77.4538,
+            "product": "Tomato",
+            "quantity": 900,
+            "quality": "A",
+            "price": 28,
+            "delivery_days": 2,
+            "reliability": 91
+        },
+
+        {
+            "id": "F003",
+            "name": "Suresh Verma",
+            "type": "Farmer",
+            "location": "Baghpat",
+            "latitude": 28.9440,
+            "longitude": 77.2189,
+            "product": "Tomato",
+            "quantity": 1100,
+            "quality": "A",
+            "price": 30,
+            "delivery_days": 2,
+            "reliability": 88
+        },
+
+        {
+            "id": "F004",
+            "name": "Meerut FPO",
+            "type": "FPO",
+            "location": "Meerut",
+            "latitude": 28.9845,
+            "longitude": 77.7064,
+            "product": "Tomato",
+            "quantity": 1800,
+            "quality": "A",
+            "price": 29,
+            "delivery_days": 2,
+            "reliability": 97
+        },
+
+        {
+            "id": "F005",
+            "name": "Ravi Sharma",
+            "type": "Farmer",
+            "location": "Hapur",
+            "latitude": 28.7306,
+            "longitude": 77.7759,
+            "product": "Tomato",
+            "quantity": 700,
+            "quality": "B",
+            "price": 26,
+            "delivery_days": 4,
+            "reliability": 82
+        },
+
+        {
+            "id": "F006",
+            "name": "Kisan FPO",
+            "type": "FPO",
+            "location": "Bulandshahr",
+            "latitude": 28.4069,
+            "longitude": 77.8498,
+            "product": "Tomato",
+            "quantity": 1500,
+            "quality": "A",
+            "price": 32,
+            "delivery_days": 3,
+            "reliability": 90
+        }
+    ]
+}

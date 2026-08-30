@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buyer Dashboard | FarmBridge AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- NAVBAR -->
+    <nav class="dashboard-nav">
+
+        <div class="logo">
+            🌱 FarmBridge <span>AI</span>
+        </div>
+
+        <div class="nav-user">
+            <div class="user-avatar">AF</div>
+
+            <div>
+                <strong>ABC Foods</strong>
+                <small>Bulk Buyer</small>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                BUYER PORTAL
+            </div>
+
+            <a href="/buyer" class="sidebar-link active">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="#demand" class="sidebar-link">
+                <span>🔄</span>
+                Post Demand
+            </a>
+
+            <a href="/matching" class="sidebar-link">
+                <span>🤖</span>
+                AI Matching
+            </a>
+
+            <a href="#orders" class="sidebar-link">
+                <span>📦</span>
+                My Orders
+            </a>
+
+            <a href="/logistics" class="sidebar-link">
+                <span>🚚</span>
+                Logistics
+            </a>
+
+            <div class="sidebar-bottom">
+
+                <a href="/" class="sidebar-link">
+                    <span>🏠</span>
+                    Home
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <!-- HEADER -->
+            <div class="dashboard-header">
+
+                <div>
+                    <p class="dashboard-label">BUYER DASHBOARD</p>
+
+                    <h1>
+                        Good evening, ABC Foods 👋
+                    </h1>
+
+                    <p>
+                        Discover supply intelligently and fulfill your
+                        requirements with optimized farm-to-market coordination.
+                    </p>
+                </div>
+
+                <button class="notification-btn">
+                    🔔
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        📦
+                    </div>
+
+                    <div>
+                        <span>Active Orders</span>
+                        <strong>12</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        🤝
+                    </div>
+
+                    <div>
+                        <span>AI Matches</span>
+                        <strong>28</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        💰
+                    </div>
+
+                    <div>
+                        <span>Estimated Savings</span>
+                        <strong>₹42K</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        🚚
+                    </div>
+
+                    <div>
+                        <span>Optimized Deliveries</span>
+                        <strong>18</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN GRID -->
+            <section class="content-grid">
+
+
+                <!-- ACTIVE DEMAND -->
+                <div class="panel demand-panel" id="demand">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Active Demand</h2>
+                            <p>Your current produce requirements</p>
+                        </div>
+
+                        <button class="small-btn">
+                            + New Demand
+                        </button>
+
+                    </div>
+
+
+                    <div class="demand-card">
+
+                        <div class="produce-icon">
+                            🍅
+                        </div>
+
+
+                        <div class="demand-info">
+
+                            <div class="demand-title-row">
+
+                                <h3>Tomato</h3>
+
+                                <span class="status active-status">
+                                    ● Active
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Grade A • Delhi NCR
+                            </p>
+
+                            <div class="demand-details">
+
+                                <div>
+                                    <span>Required Quantity</span>
+                                    <strong>5,000 kg</strong>
+                                </div>
+
+                                <div>
+                                    <span>Required By</span>
+                                    <strong>30 Aug</strong>
+                                </div>
+
+                                <div>
+                                    <span>Price Range</span>
+                                    <strong>₹27–31/kg</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="demand-action">
+
+                            <button
+                                class="match-btn"
+                                onclick="findMatches()"
+                            >
+                                🤖 Find AI Matches
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI INSIGHTS -->
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>FarmBridge Intelligence</h2>
+                            <p>AI-powered market insights</p>
+                        </div>
+
+                        <span class="live-badge">
+                            ● LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="insight-list">
+
+                        <div class="insight">
+
+                            <div class="insight-icon">
+                                📈
+                            </div>
+
+                            <div>
+                                <strong>Tomato demand rising</strong>
+                                <p>
+                                    Expected demand is <b>18%</b> higher
+                                    next week.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+
+                            <div class="insight-icon">
+                                ⚖️
+                            </div>
+
+                            <div>
+                                <strong>Fair price detected</strong>
+                                <p>
+                                    Current recommended range:
+                                    <b>₹28–31/kg</b>
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+
+                            <div class="insight-icon">
+                                🚚
+                            </div>
+
+                            <div>
+                                <strong>Logistics opportunity</strong>
+                                <p>
+                                    Pooling nearby suppliers can reduce
+                                    transport cost by <b>23%</b>.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- DEMAND FORECAST -->
+
+<section class="panel forecast-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h2>
+                📈 AI Demand Forecast
+            </h2>
+
+            <p>
+                Predicted tomato demand for Delhi NCR
+            </p>
+
+        </div>
+
+        <span class="live-badge">
+            ● ML MODEL
+        </span>
+
+    </div>
+
+
+    <div class="forecast-summary">
+
+        <div>
+
+            <span>
+                Forecast Horizon
+            </span>
+
+            <strong>
+                7 Days
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Product
+            </span>
+
+            <strong>
+                🍅 Tomato
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Location
+            </span>
+
+            <strong>
+                Delhi NCR
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="forecast-chart"
+        class="forecast-chart"
+    >
+
+        <div class="loading-state">
+            🤖 Generating demand forecast...
+        </div>
+
+    </div>
+
+
+    <div
+        id="forecast-insight"
+        class="forecast-insight"
+    >
+
+    </div>
+
+</section>
+
+
+            <!-- AI MATCH PREVIEW -->
+            <section class="panel match-preview">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Recommended Suppliers</h2>
+                        <p>Based on your active demand</p>
+                    </div>
+
+                    <a href="/matching" class="view-all">
+                        View all →
+                    </a>
+
+                </div>
+
+
+                <div class="supplier-grid">
+
+
+                    <div class="supplier-card">
+
+                        <div class="supplier-top">
+
+                            <div class="supplier-avatar">
+                                RK
+                            </div>
+
+                            <div>
+                                <h3>Rajesh Kumar</h3>
+                                <p>Meerut • Farmer</p>
+                            </div>
+
+                            <div class="match-score">
+                                96%
+                                <small>Match</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="supplier-data">
+
+                            <div>
+                                <span>Available</span>
+                                <strong>1,200 kg</strong>
+                            </div>
+
+                            <div>
+                                <span>Quality</span>
+                                <strong>Grade A</strong>
+                            </div>
+
+                            <div>
+                                <span>Distance</span>
+                                <strong>48 km</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="supplier-card">
+
+                        <div class="supplier-top">
+
+                            <div class="supplier-avatar">
+                                AS
+                            </div>
+
+                            <div>
+                                <h3>Amit Singh</h3>
+                                <p>Ghaziabad • Farmer</p>
+                            </div>
+
+                            <div class="match-score">
+                                91%
+                                <small>Match</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="supplier-data">
+
+                            <div>
+                                <span>Available</span>
+                                <strong>900 kg</strong>
+                            </div>
+
+                            <div>
+                                <span>Quality</span>
+                                <strong>Grade A</strong>
+                            </div>
+
+                            <div>
+                                <span>Distance</span>
+                                <strong>62 km</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="supplier-card">
+
+                        <div class="supplier-top">
+
+                            <div class="supplier-avatar">
+                                MF
+                            </div>
+
+                            <div>
+                                <h3>Meerut FPO</h3>
+                                <p>Meerut • FPO</p>
+                            </div>
+
+                            <div class="match-score">
+                                88%
+                                <small>Match</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="supplier-data">
+
+                            <div>
+                                <span>Available</span>
+                                <strong>1,800 kg</strong>
+                            </div>
+
+                            <div>
+                                <span>Quality</span>
+                                <strong>Grade A</strong>
+                            </div>
+
+                            <div>
+                                <span>Distance</span>
+                                <strong>54 km</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOTTOM MESSAGE -->
+            <div class="coordination-banner">
+
+                <div class="banner-icon">
+                    🌱
+                </div>
+
+                <div>
+                    <strong>
+                        FarmBridge AI coordinates fragmented supply.
+                    </strong>
+
+                    <p>
+                        Multiple farmers can be intelligently pooled to
+                        fulfill large buyer requirements.
+                    </p>
+                </div>
+
+                <a href="/matching">
+                    Explore AI Matching →
+                </a>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
